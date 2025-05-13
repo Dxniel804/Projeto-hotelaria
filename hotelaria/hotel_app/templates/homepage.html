@@ -1,24 +1,84 @@
-{% extends 'index.html' %}
-{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sistema de Hotelaria</title>
+  {% load static %}
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .fade-in-left {
+      animation: fadeInLeft 1s ease-out forwards;
+    }
 
-{% block title %}
-    Homepage
-{% endblock %}
+    .fade-in-right {
+      animation: fadeInRight 1s ease-out forwards;
+    }
 
-{% block head %}
-    <link rel="stylesheet" href="{% static 'css/csshomepage.css' %}">
-{% endblock %}
+    @keyframes fadeInLeft {
+      from { opacity: 0; transform: translateX(-30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
 
-{% block body %}
-    <div class="home-container">
-        {% for dados in dados_home %}
-            <article class="home-content">
-                <header class="home-header">
-                    <h1 class="home-title">{{dados.titulo}}</h1>
-                    <p class="home-description">{{dados.descricao}}</p>
-                    <img class="home-logo" src="{{dados.logo.url}}" alt="{{dados.titulo}}">
-                </header>
-            </article>
-        {% endfor %}
+    @keyframes fadeInRight {
+      from { opacity: 0; transform: translateX(30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-gray-100 to-gray-300 min-h-screen font-sans">
+
+  <!-- NAV -->
+  <nav class="w-full bg-white shadow-sm fixed top-0 left-0 z-50">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-xl font-semibold text-gray-800">Sistema de Hotelaria</h1>
+      <div class="relative">
+        <button id="toggleDropdown"
+          class="text-sm font-medium text-gray-700 bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded-md transition-all">
+          Iniciar Sessão
+        </button>
+        <div id="dropdownMenu"
+          class="hidden absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-10">
+          <div class="py-1">
+            <a href="{% url 'login' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Login</a>
+            <a href="{% url 'cadastrar' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Cadastrar</a>
+          </div>
+        </div>
+      </div>
     </div>
-{% endblock %}
+  </nav>
+
+  <!-- MAIN SECTION -->
+  <main class="pt-32 max-w-6xl mx-auto px-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center bg-white/80 p-10 rounded-3xl shadow-xl">
+
+      <!-- Texto -->
+      <div class="fade-in-left">
+        <h2 class="text-4xl font-extrabold text-gray-800 mb-4 leading-tight">
+          Bem-vindo ao <span class="text-blue-600">Sistema de Hotelaria</span>
+        </h2>
+        <p class="text-gray-700 text-lg leading-relaxed">
+          Controle completo das operações do seu hotel em um só lugar. Organize reservas, gerencie quartos, 
+          acompanhe hóspedes e otimize sua gestão com facilidade. Desenvolvido para tornar a administração 
+          hoteleira mais eficiente e intuitiva.
+        </p>
+      </div>
+
+      <!-- Imagem -->
+      <div class="fade-in-right">
+        <img src="{% static 'img/logo_hotelaria.webp' %}" alt="Logo do Sistema de Hotelaria"
+             class="w-full max-w-sm mx-auto rounded-xl shadow-2xl" />
+      </div>
+    </div>
+  </main>
+
+  <!-- Script do Dropdown -->
+  <script>
+    document.getElementById('toggleDropdown').addEventListener('click', function () {
+      const menu = document.getElementById('dropdownMenu');
+      menu.classList.toggle('hidden');
+    });
+  </script>
+
+</body>
+</html>

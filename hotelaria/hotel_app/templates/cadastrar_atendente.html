@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cadastrar Atendente</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen font-sans">
+
+  <!-- HEADER -->
+  <header class="bg-blue-800 text-white shadow-md">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-xl font-semibold">Cadastrar Atendente</h1>
+      <a href="{% url 'dashboard_gerente' %}" class="text-sm hover:underline">Voltar ao painel</a>
+    </div>
+  </header>
+
+  <!-- FORMULÁRIO -->
+  <main class="max-w-3xl mx-auto mt-10 bg-white p-8 rounded-xl shadow-md">
+    <form method="POST" class="space-y-6">
+      {% csrf_token %}
+      <div>
+        <label for="nome" class="block text-sm font-medium text-gray-700">Nome Completo</label>
+        <input type="text" name="nome" id="nome" required class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200">
+      </div>
+
+      <div>
+        <label for="email" class="block text-sm font-medium text-gray-700">E-mail</label>
+        <input type="email" name="email" id="email" required class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200">
+      </div>
+
+      <div>
+        <label for="senha" class="block text-sm font-medium text-gray-700">Senha</label>
+        <input type="password" name="senha" id="senha" required class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200">
+      </div>
+
+      <div class="pt-4">
+        <button type="submit" class="w-full bg-blue-700 hover:bg-blue-800 text-white font-medium py-2 px-4 rounded-lg transition">
+          Cadastrar Atendente
+        </button>
+      </div>
+    </form>
+  </main>
+
+</body>
+</html>
+    

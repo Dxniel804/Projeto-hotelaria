@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard do Gerente</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#1E3A8A',
+            secondary: '#2563EB',
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://cdn.jsdelivr.net/npm/@tailwindcss/forms@0.5.3/dist/forms.min.css" rel="stylesheet">
+</head>
+<body class="bg-gradient-to-br from-gray-100 to-gray-200 min-h-screen font-sans">
+
+  <!-- HEADER -->
+  <header class="bg-primary text-white shadow-md">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+      <h1 class="text-2xl font-semibold tracking-tight">Painel do Gerente</h1>
+      <a href="{% url 'homepage' %}" class="bg-white text-primary font-medium py-1.5 px-4 rounded-full hover:bg-gray-100 transition duration-200 text-sm">
+        Sair
+      </a>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="max-w-6xl mx-auto px-6 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+
+      <!-- Card: Cadastrar Atendente -->
+      <a href="{% url 'cadastrar_atendente' %}" class="group relative bg-white/80 backdrop-blur-md border border-gray-200 shadow-lg rounded-xl p-6 transition hover:shadow-2xl hover:-translate-y-1 hover:bg-white">
+        <div class="flex items-center gap-4">
+          <div class="bg-blue-100 p-3 rounded-full">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0-1.657-1.343-3-3-3s-3 1.343-3 3m9-3a3 3 0 00-6 0m6 0a3 3 0 11-6 0M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2" />
+            </svg>
+          </div>
+          <div>
+            <h2 class="text-lg font-semibold text-gray-800">Cadastrar Atendente</h2>
+            <p class="text-sm text-gray-600 mt-1">Adicione novos atendentes ao sistema.</p>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card: Reservar Quarto -->
+      <a href="{% url 'reservar_quarto' %}" class="group relative bg-white/80 backdrop-blur-md border border-gray-200 shadow-lg rounded-xl p-6 transition hover:shadow-2xl hover:-translate-y-1 hover:bg-white">
+        <div class="flex items-center gap-4">
+          <div class="bg-green-100 p-3 rounded-full">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16h6m2-6a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <div>
+            <h2 class="text-lg font-semibold text-gray-800">Reservar Quarto</h2>
+            <p class="text-sm text-gray-600 mt-1">Cadastre ou edite os quartos disponíveis.</p>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </main>
+
+</body>
+</html>
