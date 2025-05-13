@@ -1,0 +1,24 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}
+    Homepage
+{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/csshomepage.css' %}">
+{% endblock %}
+
+{% block body %}
+    <div class="home-container">
+        {% for dados in dados_home %}
+            <article class="home-content">
+                <header class="home-header">
+                    <h1 class="home-title">{{dados.titulo}}</h1>
+                    <p class="home-description">{{dados.descricao}}</p>
+                    <img class="home-logo" src="{{dados.logo.url}}" alt="{{dados.titulo}}">
+                </header>
+            </article>
+        {% endfor %}
+    </div>
+{% endblock %}
